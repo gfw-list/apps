@@ -26,8 +26,6 @@ jobs:
         with:
           go-version: ^1.18.1
 
-      - name: Install dependencies
-        run: go get -u      
 
       - run: go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest && \
              ~/go/bin/xcaddy  ${{ env.VERSION }} build \
