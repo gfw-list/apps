@@ -26,9 +26,10 @@ jobs:
         with:
           go-version: ^1.18.1
 
-
+      - name: build caddy 
       - run: go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest  
-      - run: ~/go/xcaddy  ${{ env.VERSION }} build \
+      - run: cd ~/go && ls &&\ 
+             ~/go/xcaddy  ${{ env.VERSION }} build \
                 --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
                 --with github.com/caddy-dns/cloudflare \
                 --with github.com/xh116/caddy-trojan \
