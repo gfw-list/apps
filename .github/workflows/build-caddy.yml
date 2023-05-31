@@ -76,7 +76,6 @@ jobs:
  
     
     - name: Generate tar for other platform
-      if: matrix.config.GOOS = 'linux-*'
       run: |
         mkdir release-ready
         cd ./release-tmp
@@ -91,7 +90,6 @@ jobs:
          
     - name: Upload to GitHub Release for other platform
       uses: svenstaro/upload-release-action@v2
-      if: github.event_name == 'release' && matrix.config.release && matrix.config.GOOS = 'linux-*'
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: ./release-ready/caddy-${{ matrix.config.name }}.tar.gz
