@@ -22,16 +22,16 @@ jobs:
           sudo apt-get -y  install curl jq  
           echo  "VERSION=$(curl -sL https://api.github.com/repos/caddyserver/caddy/releases/latest | jq -r ".tag_name")" >> $GITHUB_ENV  
 
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v4
         with:
           go-version: ^1.18.1
+          go env -w GO111MODULE=on
 
       - name: install xcaddy 
         run: go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest  
 
-      - name: build xcaddy 
-        run:  ~/go/bin/xcaddy  ${{ env.VERSION }} build \
-                --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
+      - name: build caddy 
+        run:  ~/go/bin/xcaddy  ${{ env.VERSION }} build  --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
                 --with github.com/caddy-dns/cloudflare \
                 --with github.com/xh116/caddy-trojan \
                 --with github.com/mholt/caddy-webdav
