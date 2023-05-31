@@ -19,7 +19,9 @@ jobs:
         with:
           go-version: ^1.18.1
       - run: go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
-      - run: ~/go/bin/xcaddy build \
+      - run: export version=$(curl -fsSL https://api.github.com/repos/caddyserver/caddy/releases | \
+             grep '"tag_name":' | head -n 1 | sed -E 's/.*"([^"]+)".*/\1/')  && \
+             ~/go/bin/xcaddy  ${version} build \
                 --with github.com/caddyserver/forwardproxy@caddy2=github.com/klzgrad/forwardproxy@naive \
                 --with github.com/caddy-dns/cloudflare \
                 --with github.com/xh116/caddy-trojan \
