@@ -20,9 +20,9 @@ var countryFlag = flags.get(obj['country_code']) || '🌐';
 // Function to mask IP address
 function maskIP(ip) {
   if (ip.includes('.')) { // IPv4
-    return ip.split('.').slice(0, 2).join('.') + '. *. *';
+    return ip.split('.').slice(0, 2).join('.') + '.*.*';
   } else if (ip.includes(':')) { // IPv6
-    return ip.split(':').slice(0, 2).join(':') + ':* :* ';
+    return ip.split(':').slice(0, 2).join(':') + ':*:*';
   } else {
     return ip;
   }
