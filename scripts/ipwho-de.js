@@ -17,9 +17,21 @@ var cityName = obj['city_name'] || obj['country_name'];
 // Get the country flag emoji based on country code
 var countryFlag = flags.get(obj['country_code']) || '🌐';
 
+// Function to mask IP address
+function maskIP(ip) {
+  if (ip.includes('.')) { // IPv4
+    return ip.split('.').slice(0, 2).join('.') + '. *. *';
+  } else if (ip.includes(':')) { // IPv6
+    return ip.split(':').slice(0, 2).join(':') + ':* :* ';
+  } else {
+    return ip;
+  }
+}
+
+var maskedIP = maskIP(obj['ip']);
+
 var title = countryFlag + ' ' + obj['country_code'] + '⋅' + cityName;
-var subtitle = asName + '｜' + obj['ip'] + '⬩' + 'AS' + obj['asn'];
-var ip = obj['ip'];
+var subtitle = asName + '｜' + maskedIP + '⬩' + 'AS' + obj['asn'];
 var description = 
   '─────────────\n' +
   'Country: ' + countryFlag + obj['country_name'] + '\n' +
@@ -29,5 +41,4 @@ var description =
   'ASN: AS' + obj['asn'] + '\n' +
   '─────────────';
 
-$done({ title, subtitle, ip, description });
-
+$done({ title, subtitle, ip: maskedIP, description });
