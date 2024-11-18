@@ -1628,6 +1628,7 @@ form.inline + form.inline,
 	color: #fff;
 	border: thin solid #d43f3a;
 	background-color: #d9534f;
+	cursor: pointer;
 }
 
 .cbi-dynlist > .item > span {
