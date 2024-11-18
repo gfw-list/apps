@@ -1557,7 +1557,7 @@ form.inline + form.inline,
 	content: attr(data-title) "\20";
 	text-align: center;
 	vertical-align: middle;
-	white-space: normal;
+	white-space: nowrap;
 	word-wrap: break-word;
 }
 
