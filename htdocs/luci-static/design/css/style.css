@@ -1477,7 +1477,7 @@ form.inline + form.inline,
     align-content: center;
     justify-content: flex-start;
     min-height: 40px;
-    padding: 8px 10px;
+    padding: 8px 28px;
     flex-flow:row wrap;
     border-bottom: var(--cbilineColor);
 }
