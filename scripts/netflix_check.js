@@ -68,7 +68,7 @@ async function fetchPage(url) {
     }
 
 const content = `
-    --------------------------------------</br></br>
+    ─────────────</br></br>
     <font color="${ 
         /Fully/.test(result) 
         ? '#32CD32' 
@@ -76,7 +76,7 @@ const content = `
         ? '#FFD700' 
         : '#FF6347'
     }" size="4">${result}</font></br>
-    --------------------------------------</br></br>
+    ─────────────</br></br>
     <font color="
     #1D98A8"><b>Node</b> :
     ${node}</font></br>
