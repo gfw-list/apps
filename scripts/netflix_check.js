@@ -62,7 +62,7 @@ async function fetchPage(url) {
                 result = "Not Available or No Region";
             } else {
                 const flag = flags.get(region) || "";
-                result = `🎉 Fully Unclocked </br></br> Region: ⟦${flag}⟧`;
+                result = `🎉 Fully Unlocked </br></br> Region: ⟦${flag}⟧`;
             }
         }
     }
