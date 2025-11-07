@@ -49,20 +49,19 @@ async function fetchPage(url) {
             result = " ⚠️ Original Only";
         } else {
             // fetch region
-            let regionMatch = page1.match(/data-country="([A-Z]{2})"/);
+            let regionMatch = page1.match(/"requestCountry":\s*{[^}]*"id":"([A-Z]{2})"/);
             let region = regionMatch ? regionMatch[1] : null;
 
-            // test page2
             if (!region) {
-                regionMatch = page2.match(/data-country="([A-Z]{2})"/);
+                regionMatch = page2.match(/"requestCountry":\s*{[^}]*"id":"([A-Z]{2})"/);
                 region = regionMatch ? regionMatch[1] : null;
             }
 
-            if (!region) {
+           if (!region) {
                 result = "Not Available or No Region";
             } else {
                 const flag = flags.get(region) || "";
-                result = `🎉 Fully Unlocked </br></br> Region: ⟦${flag}⟧`;
+                result = `🎉 Fully Unclocked </br></br> Region: ⟦${flag}⟧`;
             }
         }
     }
